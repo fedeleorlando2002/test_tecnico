@@ -1,44 +1,114 @@
-1. Configurazione dell'Ambiente di Sviluppo
-   
-- AWS Account: Registrazione e configurazione di un account AWS.
+# User API
 
-- AWS CLI: Installazione e configurazione dell'AWS CLI con aws configure.
+## Descrizione
 
-- Serverless Framework: Installazione del Serverless Framework globalmente con npm install -g serverless.
+Questo progetto implementa delle API REST per la creazione e visualizzazione di un modello utente. Utilizza AWS Lambda per l'elaborazione delle richieste, DynamoDB per la memorizzazione dei dati utente e API Gateway per l'esposizione delle API. Il progetto è sviluppato in Python e utilizza il framework Serverless per la gestione delle risorse AWS.
 
-2. Creazione del Progetto con Serverless Framework
-   
-- Creazione del Progetto: Utilizzo del comando serverless create --template aws-python3 --path user-api per creare un nuovo progetto Serverless.
+## Prerequisiti
 
-3. Configurazione del File serverless.yml
-   
-- Definizione del Servizio: Configurazione del nome del servizio, provider, runtime, regione e variabili d'ambiente.
+- Account AWS
+- Node.js e npm
+- Serverless Framework
+- Python 3.8+
+- pip (Python package installer)
 
-- Funzioni Lambda: Definizione delle funzioni createUser e getUserById con i rispettivi handler e eventi HTTP (POST e GET).
+## Setup del Progetto
 
-- Risorse AWS: Configurazione delle risorse DynamoDB per creare una tabella user-api-dev.
+1. **Clona il repository:**
 
-4. Implementazione dei Gestori delle Funzioni Lambda (handler.py)
-   
-- createUser: Funzione per creare un nuovo utente e inserirlo nella tabella DynamoDB.
-- getUserById: Funzione per recuperare un utente dalla tabella DynamoDB tramite il suo ID.
+    ```sh
+    git clone https://github.com/tuo-username/user-api.git
+    cd user-api
+    ```
 
-5. Deploy delle Risorse su AWS
-- Deploy: Utilizzo del comando serverless deploy per creare le risorse AWS e caricare le funzioni Lambda.
+2. **Crea un ambiente virtuale:**
 
-6. Verifica del Deploy su AWS
-   
-- Console AWS: Verifica della creazione delle funzioni Lambda, della tabella DynamoDB e della configurazione degli endpoint API Gateway.
-- Controllo dei Permessi: Assicurazione che le politiche IAM permettano alle funzioni Lambda di interagire con DynamoDB.
+    ```sh
+    python -m venv .venv
+    source .venv/bin/activate  # Su Windows: .venv\Scripts\activate
+    ```
 
-7. Test delle API con Postman
-- Endpoint POST: Test dell'endpoint POST /users per creare un nuovo utente.
-- Endpoint GET: Test dell'endpoint GET /users/{id} per recuperare un utente tramite ID.
+3. **Installa le dipendenze:**
 
-8. Risoluzione dei Problemi
-- Log e Debug: Utilizzo di CloudFormation e CloudWatch per monitorare e risolvere eventuali problemi durante il deploy e l'esecuzione delle funzioni Lambda.
-- Permessi IAM: Aggiunta di politiche IAM per garantire che le funzioni Lambda abbiano i permessi necessari per accedere a DynamoDB.
+    ```sh
+    pip install -r requirements.txt
+    npm install -g serverless
+    ```
 
+4. **Configura le credenziali AWS:**
 
-Conclusioni
-Abbiamo configurato e deployato con successo un set di REST API utilizzando AWS Lambda, DynamoDB e API Gateway, gestiti tramite Serverless Framework e scritti in Python. Abbiamo anche verificato il funzionamento delle API con Postman e risolto eventuali problemi relativi ai permessi IAM.
+    Esegui il comando seguente e inserisci le tue credenziali AWS:
+
+    ```sh
+    aws configure
+    ```
+
+## Deploy del Progetto
+
+1. **Configura Serverless Framework:**
+
+    ```sh
+    serverless config credentials --provider aws --key YOUR_ACCESS_KEY_ID --secret YOUR_SECRET_ACCESS_KEY
+    ```
+
+2. **Deploy dell'applicazione:**
+
+    ```sh
+    serverless deploy
+    ```
+
+    Dopo il deploy, dovresti vedere gli endpoint API e le funzioni Lambda distribuite su AWS.
+
+## Utilizzo delle API
+
+### Create User
+
+- **Metodo**: POST
+- **URL**: `https://<your-api-id>.execute-api.us-east-1.amazonaws.com/dev/users`
+- **Corpo della richiesta** (JSON):
+
+    ```json
+    {
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    }
+    ```
+
+- **Risposta** (201 - Created):
+
+    ```json
+    {
+      "id": "generated-uuid",
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    }
+    ```
+
+### Get User by ID
+
+- **Metodo**: GET
+- **URL**: `https://<your-api-id>.execute-api.us-east-1.amazonaws.com/dev/users/{id}`
+
+- **Risposta** (200 - OK):
+
+    ```json
+    {
+      "id": "generated-uuid",
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    }
+    ```
+
+- **Risposta** (404 - Not Found):
+
+    ```json
+    {
+      "error": "User not found"
+    }
+    ```
+
+## Struttura del Progetto
+
+- `create_user.py`: Funzione Lambda per creare un nuovo utente.
+- `get_user.py`: Funzione Lambda per ottenere un utente per ID.
+- `serverless.yml`: Configurazione Serverless Framework per definire le risorse e le funzioni AWS.
