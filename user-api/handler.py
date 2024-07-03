@@ -18,6 +18,20 @@ def createUser(event, context):
             "body": json.dumps({"message": "Missing required fields"})  # Messaggio di errore
         }
 
+    # Controllo se l'ID esiste già
+    try:
+        response = table.get_item(Key={'id': data['id']})
+        if 'Item' in response:
+            return {
+                "statusCode": 400,  # Codice di stato HTTP per richiesta non valida
+                "body": json.dumps({"message": "User with this ID already exists"})  # Messaggio di errore
+            }
+    except ClientError as e:
+        return {
+            "statusCode": 500,  # Codice di stato HTTP per errore interno del server
+            "body": json.dumps({"message": str(e)})  # Messaggio di errore
+        }
+
     # Creazione dell'elemento da inserire nella tabella
     item = {
         'id': data['id'],
@@ -29,7 +43,7 @@ def createUser(event, context):
         # Inserimento dell'elemento nella tabella DynamoDB
         table.put_item(Item=item)
         return {
-            "statusCode": 200,  # Codice di stato HTTP per richiesta riuscita
+            "statusCode": 201,  # Codice di stato HTTP per creazione riuscita
             "body": json.dumps(item)  # Restituzione dell'elemento inserito
         }
     except ClientError as e:

@@ -176,7 +176,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/user-api/dev/1720002155603-2024-07-03T10:22:35.603Z/user-api.zip"
+          "S3Key": "serverless/user-api/dev/1720009629679-2024-07-03T12:27:09.679Z/user-api.zip"
         },
         "Handler": "handler.createUser",
         "Runtime": "python3.8",
@@ -206,7 +206,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/user-api/dev/1720002155603-2024-07-03T10:22:35.603Z/user-api.zip"
+          "S3Key": "serverless/user-api/dev/1720009629679-2024-07-03T12:27:09.679Z/user-api.zip"
         },
         "Handler": "handler.getUserById",
         "Runtime": "python3.8",
@@ -229,24 +229,24 @@
         "GetUserByIdLogGroup"
       ]
     },
-    "CreateUserLambdaVersionBKAsO9znjWbt8zAxWuTDZ0SF6UyftZXI4Irs3Y58": {
+    "CreateUserLambdaVersionD81uuKnr77yaclGx889wAgjmqolKHYlKHXG0cTix4": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateUserLambdaFunction"
         },
-        "CodeSha256": "gl9bWunTIOauUVnnDPHsSLssVAikBZmeL6MNF3B9l84="
+        "CodeSha256": "O70CJIimlb7MhcdZf9lHic/mW2zpWa8WJgxaQDxhxzg="
       }
     },
-    "GetUserByIdLambdaVersiono7R0ALhTyaPuVFe6O1YjUMwboSrTn1yB0nVaFSLHlE": {
+    "GetUserByIdLambdaVersionljFl01rnvwN3n0qIYelRzmGJdoJPVgCCigTFLVKDAb8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetUserByIdLambdaFunction"
         },
-        "CodeSha256": "gl9bWunTIOauUVnnDPHsSLssVAikBZmeL6MNF3B9l84="
+        "CodeSha256": "O70CJIimlb7MhcdZf9lHic/mW2zpWa8WJgxaQDxhxzg="
       }
     },
     "ApiGatewayRestApi": {
@@ -470,7 +470,7 @@
         "GetUserByIdLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1720002155100": {
+    "ApiGatewayDeployment1720009628811": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -594,7 +594,7 @@
     "CreateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateUserLambdaVersionBKAsO9znjWbt8zAxWuTDZ0SF6UyftZXI4Irs3Y58"
+        "Ref": "CreateUserLambdaVersionD81uuKnr77yaclGx889wAgjmqolKHYlKHXG0cTix4"
       },
       "Export": {
         "Name": "sls-user-api-dev-CreateUserLambdaFunctionQualifiedArn"
@@ -603,7 +603,7 @@
     "GetUserByIdLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetUserByIdLambdaVersiono7R0ALhTyaPuVFe6O1YjUMwboSrTn1yB0nVaFSLHlE"
+        "Ref": "GetUserByIdLambdaVersionljFl01rnvwN3n0qIYelRzmGJdoJPVgCCigTFLVKDAb8"
       },
       "Export": {
         "Name": "sls-user-api-dev-GetUserByIdLambdaFunctionQualifiedArn"

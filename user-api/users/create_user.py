@@ -1,6 +1,7 @@
 import json
 import boto3
 import uuid
+from botocore.exceptions import ClientError
 
 # Inizializzazione della risorsa DynamoDB
 dynamodb = boto3.resource('dynamodb')
@@ -19,8 +20,14 @@ def create_user(event):
         'email': body['email']
     }
     
-    # Inserimento dell'oggetto utente nella tabella DynamoDB
-    table.put_item(Item=user)
+    try:
+        # Inserimento dell'oggetto utente nella tabella DynamoDB
+        table.put_item(Item=user)
+    except ClientError as e:
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'error': str(e)})
+        }
 
     return {
         'statusCode': 201,  # Codice di stato HTTP per risorsa creata
