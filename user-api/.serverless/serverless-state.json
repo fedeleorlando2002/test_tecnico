@@ -196,7 +196,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/user-api/dev/1719931915773-2024-07-02T14:51:55.773Z/user-api.zip"
+                "S3Key": "serverless/user-api/dev/1720002155603-2024-07-03T10:22:35.603Z/user-api.zip"
               },
               "Handler": "handler.createUser",
               "Runtime": "python3.8",
@@ -226,7 +226,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/user-api/dev/1719931915773-2024-07-02T14:51:55.773Z/user-api.zip"
+                "S3Key": "serverless/user-api/dev/1720002155603-2024-07-03T10:22:35.603Z/user-api.zip"
               },
               "Handler": "handler.getUserById",
               "Runtime": "python3.8",
@@ -249,24 +249,24 @@
               "GetUserByIdLogGroup"
             ]
           },
-          "CreateUserLambdaVersionrpXGVmn7NMKaMIP5eDbx9r5qNVgiv9eCCnTQfNZmo": {
+          "CreateUserLambdaVersionBKAsO9znjWbt8zAxWuTDZ0SF6UyftZXI4Irs3Y58": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateUserLambdaFunction"
               },
-              "CodeSha256": "2TlcPCmg8U7/f0FChawtNQptOn/u/U/CTlm/rnNQiLM="
+              "CodeSha256": "gl9bWunTIOauUVnnDPHsSLssVAikBZmeL6MNF3B9l84="
             }
           },
-          "GetUserByIdLambdaVersionrlawFUCs0mAAB8cuudjL5HMfZDWiKOYhyoQj1kWkg": {
+          "GetUserByIdLambdaVersiono7R0ALhTyaPuVFe6O1YjUMwboSrTn1yB0nVaFSLHlE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetUserByIdLambdaFunction"
               },
-              "CodeSha256": "2TlcPCmg8U7/f0FChawtNQptOn/u/U/CTlm/rnNQiLM="
+              "CodeSha256": "gl9bWunTIOauUVnnDPHsSLssVAikBZmeL6MNF3B9l84="
             }
           },
           "ApiGatewayRestApi": {
@@ -490,7 +490,7 @@
               "GetUserByIdLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1719931914919": {
+          "ApiGatewayDeployment1720002155100": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -614,7 +614,7 @@
           "CreateUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateUserLambdaVersionrpXGVmn7NMKaMIP5eDbx9r5qNVgiv9eCCnTQfNZmo"
+              "Ref": "CreateUserLambdaVersionBKAsO9znjWbt8zAxWuTDZ0SF6UyftZXI4Irs3Y58"
             },
             "Export": {
               "Name": "sls-user-api-dev-CreateUserLambdaFunctionQualifiedArn"
@@ -623,7 +623,7 @@
           "GetUserByIdLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetUserByIdLambdaVersionrlawFUCs0mAAB8cuudjL5HMfZDWiKOYhyoQj1kWkg"
+              "Ref": "GetUserByIdLambdaVersiono7R0ALhTyaPuVFe6O1YjUMwboSrTn1yB0nVaFSLHlE"
             },
             "Export": {
               "Name": "sls-user-api-dev-GetUserByIdLambdaFunctionQualifiedArn"
@@ -777,7 +777,7 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "CreateUserLambdaVersionrpXGVmn7NMKaMIP5eDbx9r5qNVgiv9eCCnTQfNZmo"
+        "versionLogicalId": "CreateUserLambdaVersionBKAsO9znjWbt8zAxWuTDZ0SF6UyftZXI4Irs3Y58"
       },
       "getUserById": {
         "handler": "handler.getUserById",
@@ -813,7 +813,7 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "GetUserByIdLambdaVersionrlawFUCs0mAAB8cuudjL5HMfZDWiKOYhyoQj1kWkg"
+        "versionLogicalId": "GetUserByIdLambdaVersiono7R0ALhTyaPuVFe6O1YjUMwboSrTn1yB0nVaFSLHlE"
       }
     },
     "resources": {
@@ -863,7 +863,7 @@
     "artifact": "C:\\Users\\Utente\\Desktop\\progetto_python\\user-api\\.serverless\\user-api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/user-api/dev/1719931915773-2024-07-02T14:51:55.773Z",
+    "artifactDirectoryName": "serverless/user-api/dev/1720002155603-2024-07-03T10:22:35.603Z",
     "artifact": "user-api.zip"
   }
 }
