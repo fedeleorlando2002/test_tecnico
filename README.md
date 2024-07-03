@@ -17,7 +17,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 1. **Clona il repository:**
 
     ```sh
-    git clone https://github.com/tuo-username/user-api.git
+    https://github.com/fedeleorlando2002/test_tecnico.git
     cd user-api
     ```
 
