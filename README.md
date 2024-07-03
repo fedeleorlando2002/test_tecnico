@@ -64,7 +64,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 ### Create User
 
 - **Metodo**: POST
-- **URL**: `https://<your-api-id>.execute-api.us-east-1.amazonaws.com/dev/users`
+- **URL**: `https://n4arthfeb1.execute-api.us-east-1.amazonaws.com/dev/users`
 - **Corpo della richiesta** (JSON):
 
     ```json
