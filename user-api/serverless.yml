@@ -1,0 +1,57 @@
+# Nome del servizio
+service: user-api
+
+# Configurazione del provider AWS
+provider:
+  name: aws  # Utilizza AWS come provider
+  runtime: python3.8  # Specifica la versione di Python da utilizzare
+  stage: dev  # Stage dell'ambiente (può essere 'dev', 'prod', ecc.)
+  region: us-east-1  # Regione AWS in cui verranno create le risorse
+  environment:
+    TABLE_NAME: ${self:service}-${self:provider.stage}  # Nome della tabella DynamoDB, composto dal nome del servizio e dallo stage
+
+  # Permessi IAM per le funzioni Lambda
+  iamRoleStatements:
+    - Effect: Allow  # Permesso di tipo "Allow"
+      Action:
+        - dynamodb:PutItem  # Permesso di inserire elementi in DynamoDB
+        - dynamodb:GetItem  # Permesso di ottenere elementi da DynamoDB
+      Resource:
+        - arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TABLE_NAME}  # Risorsa DynamoDB a cui applicare i permessi
+
+# Definizione delle funzioni Lambda
+functions:
+  # Funzione per creare un nuovo utente
+  createUser:
+    handler: handler.createUser  # Indica il file e la funzione che gestiscono questa Lambda
+    events:
+      - http:  # Evento HTTP
+          path: users  # Endpoint per questa funzione
+          method: post  # Metodo HTTP (POST)
+          cors: true  # Abilita CORS per questa funzione
+
+  # Funzione per ottenere un utente tramite ID
+  getUserById:
+    handler: handler.getUserById  # Indica il file e la funzione che gestiscono questa Lambda
+    events:
+      - http:  # Evento HTTP
+          path: users/{id}  # Endpoint con parametro di percorso {id}
+          method: get  # Metodo HTTP (GET)
+          cors: true  # Abilita CORS per questa funzione
+
+# Definizione delle risorse AWS da creare
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table  # Tipo di risorsa AWS (Tabella DynamoDB)
+      Properties:
+        TableName: ${self:provider.environment.TABLE_NAME}  # Nome della tabella DynamoDB
+        AttributeDefinitions:
+          - AttributeName: id  # Definizione dell'attributo "id"
+            AttributeType: S  # Tipo di attributo (Stringa)
+        KeySchema:
+          - AttributeName: id  # Attributo chiave
+            KeyType: HASH  # Tipo di chiave (HASH)
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1  # Unità di capacità di lettura
+          WriteCapacityUnits: 1  # Unità di capacità di scrittura
