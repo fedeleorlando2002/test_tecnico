@@ -51,7 +51,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
     serverless config credentials --provider aws --key YOUR_ACCESS_KEY_ID --secret YOUR_SECRET_ACCESS_KEY
     ```
 
-     Controllare YOUR_ACCESS_KEY_ID e YOUR_SECRET_ACCESS_KEY siano gli stessi credenziali su AWS.
+     Verificare che YOUR_ACCESS_KEY_ID e YOUR_SECRET_ACCESS_KEY siano le stesse credenziali su AWS.
 
 2. **Deploy dell'applicazione:**
 
