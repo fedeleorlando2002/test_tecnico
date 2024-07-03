@@ -87,7 +87,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 ### Get User by ID
 
 - **Metodo**: GET
-- **URL**: `https://<your-api-id>.execute-api.us-east-1.amazonaws.com/dev/users/{id}`
+- **URL**: `https://n4arthfeb1.execute-api.us-east-1.amazonaws.com/dev/users/{id}`
 
 - **Risposta** (200 - OK):
 
