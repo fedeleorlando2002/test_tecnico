@@ -69,6 +69,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 
     ```json
     {
+      "id": "1",
       "name": "John Doe",
       "email": "john.doe@example.com"
     }
@@ -78,7 +79,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 
     ```json
     {
-      "id": "generated-uuid",
+      "id": "1",
       "name": "John Doe",
       "email": "john.doe@example.com"
     }
