@@ -24,7 +24,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 2. **Crea un ambiente virtuale:**
 
     ```sh
-    python -m venv .venv
+    python -m venv .venv       # Su Windows: py -3 -m venv .venv
     source .venv/bin/activate  # Su Windows: .venv\Scripts\activate
     ```
 
