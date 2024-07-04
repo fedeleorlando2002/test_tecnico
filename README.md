@@ -106,7 +106,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 
     ```json
     {
-      "messagio": "Utente non trovato"
+      "errore": "Utente non trovato"
     }
     ```
 
