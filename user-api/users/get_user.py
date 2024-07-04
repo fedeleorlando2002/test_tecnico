@@ -25,5 +25,5 @@ def get_user(event):
     else:
         return {
             'statusCode': 404,  # Codice di stato HTTP per risorsa non trovata
-            'body': json.dumps({'error': 'User not found'})  # Messaggio di errore
+            'body': json.dumps({'errore': 'Utente non trovato'})  # Messaggio di errore
         }

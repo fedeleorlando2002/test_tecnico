@@ -15,7 +15,7 @@ def createUser(event, context):
     if 'id' not in data or 'name' not in data or 'email' not in data:
         return {
             "statusCode": 400,  # Codice di stato HTTP per richiesta non valida
-            "body": json.dumps({"message": "Missing required fields"})  # Messaggio di errore
+            "body": json.dumps({"messagio": "Campi obbligatori mancanti"})  # Messaggio di errore
         }
 
     # Controllo se l'ID esiste già
@@ -24,7 +24,7 @@ def createUser(event, context):
         if 'Item' in response:
             return {
                 "statusCode": 400,  # Codice di stato HTTP per richiesta non valida
-                "body": json.dumps({"message": "User with this ID already exists"})  # Messaggio di errore
+                "body": json.dumps({"messagio": "Utente con questo id esiste già"})  # Messaggio di errore
             }
     except ClientError as e:
         return {
@@ -68,7 +68,7 @@ def getUserById(event, context):
         else:
             return {
                 "statusCode": 404,  # Codice di stato HTTP per elemento non trovato
-                "body": json.dumps({"message": "User not found"})  # Messaggio di errore
+                "body": json.dumps({"messagio": "Utente non trovato"})  # Messaggio di errore
             }
     except ClientError as e:
         # Gestione degli errori di AWS DynamoDB
