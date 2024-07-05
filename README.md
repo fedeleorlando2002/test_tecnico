@@ -96,7 +96,7 @@ Questo progetto implementa delle API REST per la creazione e visualizzazione di 
 
     ```json
     {
-      "id": "generated-id",
+      "id": "{id}",
       "name": "John Doe",
       "email": "john.doe@example.com"
     }
